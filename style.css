@@ -1,0 +1,261 @@
+@font-face {
+  font-family: "LeagueSpartan";
+  font-weight: 700;
+  src: url("./assets/LeagueSpartan.ttf") format("truetype");
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+button {
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  font-family: "LeagueSpartan";
+  transition: all 0.3s ease-in-out;
+}
+
+.calc_wrapper {
+  margin-inline: 1rem;
+}
+.calc_wrapper .calc_operant,
+.calc_wrapper .calc_controls {
+  padding: 1rem;
+  margin-top: 35px;
+  border-radius: 0.4rem;
+}
+.calc_wrapper .calc_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+.calc_wrapper .calc_header h1 {
+  font-size: 24px;
+}
+.calc_wrapper .calc_header .calc_theme {
+  display: flex;
+  align-items: center;
+}
+.calc_wrapper .calc_header .calc_theme > span {
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-right: 20px;
+}
+.calc_wrapper .calc_header .calc_theme .theme_switch {
+  height: 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 5px;
+  border-radius: 100vw;
+}
+.calc_wrapper .calc_header .calc_theme .theme_switch span {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.calc_wrapper .calc_header .calc_theme .theme_switch span:not(:last-child) {
+  margin-right: 4px;
+}
+.calc_wrapper .calc_header .calc_theme .theme_switch span::after {
+  position: absolute;
+  top: -130%;
+  left: 40%;
+  font-size: 11px;
+  content: attr(data-theme);
+}
+.calc_wrapper .calc_operant {
+  text-align: right;
+  font-size: 40px;
+  display: flex;
+  display: grid;
+  place-content: center end;
+  min-height: 120px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.calc_wrapper .calc_controls {
+  font-size: 24px;
+  display: grid;
+  grid-gap: 16px;
+  transition: all 0.3s ease-in-out;
+}
+.calc_wrapper .calc_controls .span_two {
+  grid-column: span 2;
+}
+.calc_wrapper .calc_controls button {
+  display: grid;
+  place-items: center;
+  border-radius: 0.4rem;
+}
+
+body[data-theme_accent="1"] {
+  background: hsl(222, 26%, 31%);
+  color: hsl(30, 25%, 89%);
+}
+body[data-theme_accent="1"] .calc_wrapper div.calc_operant {
+  background: hsl(224, 36%, 15%);
+}
+body[data-theme_accent="1"] .calc_wrapper div.calc_controls {
+  background: hsl(223, 31%, 20%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_header .theme_switch {
+  background: hsl(223, 31%, 20%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_header .theme_switch span.active-theme {
+  background: hsl(6, 63%, 50%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_controls button {
+  background: hsl(30, 25%, 89%);
+  box-shadow: 0 4px 0 0 hsl(28, 16%, 65%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_controls button:hover {
+  background: hsl(0, 0%, 100%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_controls button[data-delete=""], body[data-theme_accent="1"] .calc_wrapper .calc_controls button[data-reset=""] {
+  color: hsl(0, 0%, 100%);
+  background: hsl(225, 21%, 49%);
+  box-shadow: 0 4px 0 0 hsl(224, 28%, 35%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_controls button[data-delete=""]:hover, body[data-theme_accent="1"] .calc_wrapper .calc_controls button[data-reset=""]:hover {
+  filter: brightness(1.6);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_controls button[data-equals=""] {
+  color: hsl(0, 0%, 100%);
+  background: hsl(6, 63%, 50%);
+  box-shadow: 0 4px 0 0 hsl(6, 70%, 34%);
+}
+body[data-theme_accent="1"] .calc_wrapper .calc_controls button[data-equals=""]:hover {
+  filter: brightness(1.6);
+}
+
+body[data-theme_accent="2"] {
+  background: hsl(45, 7%, 89%);
+}
+body[data-theme_accent="2"] .calc_wrapper div.calc_operant {
+  background: hsl(0, 0%, 93%);
+  color: hsl(60, 10%, 19%);
+}
+body[data-theme_accent="2"] .calc_wrapper div.calc_controls {
+  background: hsl(0, 5%, 81%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_header .theme_switch {
+  background: hsl(0, 5%, 81%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_header .theme_switch span.active-theme {
+  background: hsl(25, 98%, 40%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_controls button {
+  background: hsl(45, 7%, 89%);
+  box-shadow: 0 4px 0 0 hsl(28, 16%, 65%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_controls button:hover {
+  background: hsl(0, 0%, 100%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_controls button[data-delete=""], body[data-theme_accent="2"] .calc_wrapper .calc_controls button[data-reset=""] {
+  color: hsl(0, 0%, 100%);
+  background: hsl(185, 42%, 37%);
+  box-shadow: 0 4px 0 0 hsl(185, 58%, 25%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_controls button[data-delete=""]:hover, body[data-theme_accent="2"] .calc_wrapper .calc_controls button[data-reset=""]:hover {
+  filter: brightness(1.4);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_controls button[data-equals=""] {
+  color: hsl(0, 0%, 100%);
+  background: hsl(25, 98%, 40%);
+  box-shadow: 0 4px 0 0 hsl(25, 99%, 27%);
+}
+body[data-theme_accent="2"] .calc_wrapper .calc_controls button[data-equals=""]:hover {
+  filter: brightness(1.4);
+}
+
+body[data-theme_accent="3"] {
+  color: hsl(52, 100%, 62%);
+  background: hsl(268, 75%, 9%);
+}
+body[data-theme_accent="3"] .calc_wrapper div.calc_operant {
+  background: hsl(268, 71%, 12%);
+}
+body[data-theme_accent="3"] .calc_wrapper div.calc_controls {
+  background: hsl(268, 71%, 12%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_header .theme_switch {
+  background: hsl(268, 47%, 21%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_header .theme_switch span.active-theme {
+  background: hsl(176, 100%, 44%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_controls button {
+  background: hsl(268, 47%, 21%);
+  color: hsl(52, 100%, 62%);
+  box-shadow: 0 4px 0 0 hsl(290, 70%, 36%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_controls button:hover {
+  background: hsl(281, 89%, 26%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_controls button[data-delete=""], body[data-theme_accent="3"] .calc_wrapper .calc_controls button[data-reset=""] {
+  color: hsl(0, 0%, 100%);
+  background: hsl(281, 89%, 26%);
+  box-shadow: 0 4px 0 0 hsl(285, 91%, 52%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_controls button[data-delete=""]:hover, body[data-theme_accent="3"] .calc_wrapper .calc_controls button[data-reset=""]:hover {
+  filter: brightness(1.5);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_controls button[data-equals=""] {
+  color: hsl(0, 0%, 100%);
+  background: hsl(176, 100%, 44%);
+  box-shadow: 0 4px 0 0 hsl(177, 92%, 70%);
+}
+body[data-theme_accent="3"] .calc_wrapper .calc_controls button[data-equals=""]:hover {
+  filter: brightness(1.5);
+}
+
+@media (min-width: 450px) {
+  .calc_wrapper {
+    width: 450px;
+  }
+  .calc_wrapper .calc_controls {
+    font-size: 22px;
+    grid-template-columns: repeat(4, 22%);
+    grid-template-rows: repeat(5, 3.2rem);
+  }
+  .calc_wrapper .calc_controls button[data-delete=""], .calc_wrapper .calc_controls button[data-reset=""] {
+    font-size: 20px;
+  }
+}
+@media (max-width: 449.99px) {
+  .calc_wrapper {
+    width: 100%;
+  }
+  .calc_wrapper .calc_controls {
+    font-size: 20px;
+    grid-template-columns: repeat(4, 21%);
+    grid-template-rows: repeat(5, 3.5rem);
+  }
+  .calc_wrapper .calc_controls button[data-delete=""], .calc_wrapper .calc_controls button[data-reset=""] {
+    font-size: 18px;
+  }
+}/*# sourceMappingURL=style.css.map */
